@@ -44,7 +44,7 @@ const steps = [
     title: "¡Hecho!",
     description: "Ahora ya sabes cómo usar el simulador. ¡Comienza a experimentar!",
     icon: CheckCircle,
-    content: "Simulador desarrollado por Cristian David Arboleda. ¡Disfruta explorando los diferentes algoritmos de planificación de procesos!"
+    content: "¡Disfruta explorando los diferentes algoritmos de planificación de procesos!"
   }
 ];
 
@@ -125,16 +125,32 @@ export const OnboardingGuide = ({ isOpen, onClose }: OnboardingGuideProps) => {
           </div>
 
           {currentStep === steps.length - 1 && (
-            <div className="text-center bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-xl p-6 border border-green-500/30">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-xl p-8 border border-green-500/30">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-green-400 mb-2">¡Perfecto!</h3>
-              <p className="text-gray-300 mb-4">
+              <h3 className="text-2xl font-bold text-green-400 mb-4">¡Perfecto!</h3>
+              <p className="text-gray-300 mb-8 text-lg">
                 Ya tienes todo lo necesario para usar el simulador de procesos
               </p>
-              <div className="text-sm text-gray-400 italic">
-                💻 Desarrollado por <span className="text-blue-400 font-semibold">Cristian David Arboleda</span>
+              
+              {/* Developer credit with large, attractive font */}
+              <div className="bg-gradient-to-r from-purple-600/30 to-blue-600/30 rounded-2xl p-6 border border-purple-500/40 mb-4">
+                <div className="text-center">
+                  <div className="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">
+                    Desarrollado por
+                  </div>
+                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent leading-tight">
+                    Cristian David Arboleda
+                  </div>
+                  <div className="flex justify-center mt-3">
+                    <div className="flex items-center gap-2 text-purple-300">
+                      <Sparkles className="w-5 h-5 animate-pulse" />
+                      <span className="text-lg font-medium">💻 Universidad</span>
+                      <Sparkles className="w-5 h-5 animate-pulse" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
