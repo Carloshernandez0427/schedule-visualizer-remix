@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ProcessForm } from '@/components/ProcessForm';
 import { AlgorithmSelector } from '@/components/AlgorithmSelector';
@@ -11,7 +10,7 @@ import { AlgorithmEducation } from '@/components/AlgorithmEducation';
 import { ProcessStatistics } from '@/components/ProcessStatistics';
 import { Process, SchedulingResult } from '@/types/scheduling';
 import { runFIFO, runRoundRobin, runSJF } from '@/utils/schedulingAlgorithms';
-import { Cpu, Sparkles, Play, Settings, Users, BarChart3, HelpCircle, Compare, BookOpen } from 'lucide-react';
+import { Cpu, Sparkles, Play, Settings, Users, BarChart3, HelpCircle, GitCompare, BookOpen, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -131,7 +130,7 @@ const Index = () => {
                 disabled={isSimulating}
                 className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
               >
-                <Compare className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
+                <GitCompare className="w-4 h-4 lg:w-5 lg:h-5 mr-2" />
                 Comparar Algoritmos
               </Button>
             )}
