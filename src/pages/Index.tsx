@@ -5,9 +5,11 @@ import { AlgorithmSelector } from '@/components/AlgorithmSelector';
 import { ProcessTable } from '@/components/ProcessTable';
 import { ResultsDisplay } from '@/components/ResultsDisplay';
 import { GanttChart } from '@/components/GanttChart';
+import { OnboardingGuide } from '@/components/OnboardingGuide';
 import { Process, SchedulingResult } from '@/types/scheduling';
 import { runFIFO, runRoundRobin, runSJF } from '@/utils/schedulingAlgorithms';
-import { Cpu, Sparkles, Play, Settings, Users, BarChart3 } from 'lucide-react';
+import { Cpu, Sparkles, Play, Settings, Users, BarChart3, HelpCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const [processes, setProcesses] = useState<Process[]>([]);
@@ -15,6 +17,7 @@ const Index = () => {
   const [quantum, setQuantum] = useState(2);
   const [results, setResults] = useState<SchedulingResult | null>(null);
   const [isSimulating, setIsSimulating] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   const addProcess = (process: Omit<Process, 'id'>) => {
     const newProcess: Process = {
@@ -88,10 +91,22 @@ const Index = () => {
               <Sparkles className="w-6 h-6 text-yellow-400 animate-pulse" />
             </div>
           </div>
-          <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed mb-6">
             Simula y analiza algoritmos de planificación de procesos con una interfaz moderna e intuitiva
           </p>
-          <div className="flex items-center justify-center gap-6 mt-6 text-sm text-gray-400">
+          
+          {/* Help Button */}
+          <div className="flex items-center justify-center gap-6 mb-6">
+            <Button
+              onClick={() => setShowOnboarding(true)}
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <HelpCircle className="w-5 h-5 mr-2" />
+              ¿Cómo funciona?
+            </Button>
+          </div>
+          
+          <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               <span>FIFO</span>
@@ -235,6 +250,12 @@ const Index = () => {
           </div>
         </div>
       </div>
+
+      {/* Onboarding Guide */}
+      <OnboardingGuide 
+        isOpen={showOnboarding} 
+        onClose={() => setShowOnboarding(false)} 
+      />
     </div>
   );
 };
